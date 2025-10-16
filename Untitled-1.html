@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Circle Music UI (HEX đẹp)</title>
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(135deg,#0a0f1f,#1b2540);
+  font-family: "Inter", sans-serif;
+  color: #e2e8f0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+/* --- LAYOUT CHÍNH --- */
+.app {
+  display: grid;
+  grid-template-columns: 220px 1fr 280px;
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  background: #121a2f;
+  border-radius: 12px;
+  padding: 20px;
+}
+.sidebar h2 {
+  margin-top: 0;
+  color: #3b82f6;
+}
+.nav a {
+  display: block;
+  text-decoration: none;
+  color: #94a3b8;
+  margin: 10px 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: all 0.25s;
+}
+.nav a:hover,
+.nav a.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* --- MAIN CONTENT --- */
+.main {
+  background: #1b2540;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+}
+.albums {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.album {
+  background: #121a2f;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.album:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+.album img {
+  width: 100%;
+  border-radius: 8px;
+}
+.album p {
+  margin: 6px 0 0;
+  font-size: 14px;
+}
+
+/* --- RIGHT SIDEBAR --- */
+.right {
+  background: #121a2f;
+  border-radius: 12px;
+  padding: 20px;
+}
+.right h3 {
+  color: #60a5fa;
+}
+
+/* --- PLAYER --- */
+.player {
+  position: fixed;
+  left: 32px;
+  right: 32px;
+  bottom: 24px;
+  height: 80px;
+  background: linear-gradient(90deg,#0b1015,#111922);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 20px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.06);
+  z-index: 50;
+}
+.player .cover {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: url('https://picsum.photos/seed/song/200/200') center/cover no-repeat;
+}
+.player .info {
+  flex: 1;
+}
+.player .info strong {
+  font-size: 15px;
+}
+.player .info small {
+  display: block;
+  color: #9ca3af;
+  font-size: 13px;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.controls button {
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.25s, transform 0.15s;
+}
+.controls button:hover {
+  color: #3b82f6;
+  transform: scale(1.1);
+}
+.controls .play {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#2f7df6,#00aaff);
+  color: white;
+  font-size: 20px;
+  border: none;
+}
+.seek {
+  width: 260px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+}
+.seek span {
+  font-size: 13px;
+  color: #9ca3af;
+}
+.bar {
+  flex: 1;
+  height: 6px;
+  background: #1e293b;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg,#2f7df6,#00aaff);
+}
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e5e7eb;
+}
+
+/* --- RESPONSIVE --- */
+@media(max-width:1000px){
+  .app { grid-template-columns: 70px 1fr; }
+  .right { display:none; }
+}
+</style>
+</head>
+
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>🎧 Circle</h2>
+      <nav class="nav">
+        <a href="#" class="active">Trang chủ</a>
+        <a href="#">Tìm kiếm</a>
+        <a href="#">Thư viện</a>
+        <a href="#">Playlist</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <h2>Album phổ biến</h2>
+      <div class="albums">
+        <div class="album">
+          <img src="https://picsum.photos/seed/a/200/200" alt="">
+          <p>Midnight Sky</p>
+        </div>
+        <div class="album">
+          <img src="https://picsum.photos/seed/b/200/200" alt="">
+          <p>Blue Lights</p>
+        </div>
+        <div class="album">
+          <img src="https://picsum.photos/seed/c/200/200" alt="">
+          <p>Echo Dreams</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right -->
+    <aside class="right">
+      <h3>Top Artists</h3>
+      <p>Aria</p>
+      <p>Nova</p>
+      <p>Zenith</p>
+    </aside>
+  </div>
+
+  <!-- Player -->
+  <div class="player">
+    <div class="cover"></div>
+    <div class="info">
+      <strong>Rhythmic Echoes</strong>
+      <small>Alex Harmon</small>
+    </div>
+    <div class="controls">
+      <button>⏮</button>
+      <button class="play">▶</button>
+      <button>⏭</button>
+    </div>
+    <div class="seek">
+      <span>03:12</span>
+      <div class="bar"><i></i></div>
+      <span>04:10</span>
+    </div>
+    <div class="icons">
+      <span>🔈</span>
+      <span>💾</span>
+    </div>
+  </div>
+</body>
+</html>
+
